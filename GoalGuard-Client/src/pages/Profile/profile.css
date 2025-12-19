@@ -1,0 +1,176 @@
+
+/* --- Container chung --- */
+.profile-container {
+    padding: 20px;
+    width: 100%;
+}
+
+/* --- Breadcrumb --- */
+.profile-breadcrumb {
+    margin-bottom: 20px;
+}
+
+/* --- Profile Card --- */
+.profile-card-ui {
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition: 0.3s;
+}
+
+.profile-card-ui:hover {
+    transform: translateY(-3px);
+}
+
+/* --- Avatar --- */
+.profile-avatar {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e6f4ff;
+    margin-bottom: 15px;
+}
+
+/* --- Header text --- */
+.profile-header {
+    text-align: center;
+}
+
+.profile-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.profile-email,
+.profile-phone,
+.profile-age,
+.profile-gender {
+    font-size: 15px;
+    color: #444;
+    margin: 4px 0;
+}
+
+/* --- Căn thẳng hàng thông tin người dùng --- */
+.profile-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.profile-info-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.profile-info-value {
+    color: #555;
+}
+
+
+/* --- Button --- */
+.btn-update {
+    width: 100%;
+    background-color: #1677ff;
+    color: #fff;
+    border-radius: 6px;
+    height: 40px;
+    font-weight: 500;
+}
+
+.btn-update:hover {
+    background-color: #0d62d1 !important;
+    color: #fff !important;
+}
+
+/* --- Modal --- */
+.profile-modal .ant-modal-content {
+    border-radius: 12px;
+}
+
+.btn-save {
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    background-color: #52c41a;
+    color: white;
+    border-radius: 6px;
+}
+
+.btn-save:hover {
+    background-color: #3ca112 !important;
+    color: #fff !important;
+}
+
+
+
+
+/* CHAT CARD */
+.chat-box-card {
+    border-radius: 16px !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    background: white;
+    padding: 0 0 15px 0;
+}
+
+/* Messages box */
+.chat-box-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Custom scroll */
+.chat-box-messages::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-box-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+/* Chat bubble */
+.chat-msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.chat-msg.bot {
+    background: #e8f4ff;
+    color: #005ecb;
+    border-radius: 12px 12px 12px 4px;
+}
+
+.chat-msg.user {
+    align-self: flex-end;
+    background: #1890ff;
+    color: white;
+    border-radius: 12px 12px 4px 12px;
+}
+
+/* Input */
+.chat-box-input {
+    padding: 5px 15px;
+}
+
+.chat-input-field {
+    width: 100%;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    padding-left: 12px;
+    outline: none;
+}
+
+.chat-input-field:focus {
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+}
