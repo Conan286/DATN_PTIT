@@ -28,7 +28,7 @@ const CartHistory = () => {
             okText: 'Xác nhận',
             cancelText: 'Hủy',
             onOk() {
-                handleUpdateOrder(order._id);
+                handleUpdateOrder(order.id);
             },
         });
     };
@@ -66,79 +66,134 @@ const CartHistory = () => {
         }
     }
 
+    //in hoa don
     const handlePrintInvoice = (order) => {
-        const formattedDate = moment(order.booking_date).format('DD/MM/YYYY HH:mm');
+    const formattedDate = moment(order.booking_date).format('DD/MM/YYYY');
+    const printDate = moment().format('DD/MM/YYYY HH:mm');
+    const totalAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.total_amount);
 
-        const htmlContent = `
-            <html>
-                <head>
-                    <title>Hóa đơn</title>
-                    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-                    <style>
-                        .invoice {
-                            width: 100%;
-                            margin: 0 auto;
-                            padding: 1rem;
-                            background-color: #fff;
-                            border: 1px solid #ccc;
-                            border-radius: 0.5rem;
-                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                        }
-    
-                        .invoice-header {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            margin-bottom: 1rem;
-                        }
-    
-                        .invoice-header h1 {
-                            font-size: 2rem;
-                            font-weight: bold;
-                            color: #333;
-                        }
-    
-                        .invoice-details {
-                            margin-bottom: 1rem;
-                        }
-    
-                        .invoice-details p {
-                            margin: 0.5rem 0;
-                        }
-    
-                        .invoice-total {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            font-weight: bold;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="invoice">
-                        <div class="invoice-header">
-                            <h1>Hóa đơn bán hàng</h1>
-                            <p>Ngày: ${new Date().toLocaleDateString()}</p>
+    // Nội dung quét mã QR (Bạn có thể tùy chỉnh text này)
+    const qrData = `Ma don: PTIT-${order.id} | San: ${order.name} | Ngay: ${formattedDate} | Gio: ${order.start_time}-${order.end_time}`;
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
+
+    const htmlContent = `
+        <html>
+            <head>
+                <title>Hóa đơn đặt sân</title>
+                <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+                    body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; padding: 20px; }
+                    .invoice-card { 
+                        width: 450px; margin: 0 auto; background: white; 
+                        border-radius: 24px; overflow: hidden;
+                        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                        border: 1px solid #e5e7eb;
+                    }
+                    .ticket-edge {
+                        border-top: 2px dashed #e5e7eb;
+                        position: relative;
+                    }
+                    .ticket-edge::before, .ticket-edge::after {
+                        content: ''; position: absolute; top: -11px;
+                        width: 22px; height: 22px; background: #f3f4f6; border-radius: 50%;
+                    }
+                    .ticket-edge::before { left: -12px; border-right: 1px solid #e5e7eb; }
+                    .ticket-edge::after { right: -12px; border-left: 1px solid #e5e7eb; }
+                </style>
+            </head>
+            <body>
+                <div class="invoice-card">
+                    <div class="bg-green-600 p-6 text-white text-center">
+                        <div class="text-3xl mb-1">Hệ thống đặt sân thể thao</div>
+                        <h1 class="text-xl font-bold uppercase tracking-widest">Vé Đặt Sân</h1>
+                        <p class="text-green-100 text-xs mt-1">Mã hóa đơn: #PTIT-${order.id}</p>
+                    </div>
+
+                    <div class="p-8">
+                        <div class="flex justify-between mb-6">
+                            <div>
+                                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-tight">Tên sân</p>
+                                <p class="text-base font-bold text-gray-800">${order.name}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-tight">Ngày đá</p>
+                                <p class="text-base font-bold text-gray-800">${formattedDate}</p>
+                            </div>
                         </div>
-                        <div class="invoice-details">
-                            <p><span class="font-semibold">Tên sân:</span> ${order.name}</p>
-                            <p><span class="font-semibold">Ngày đặt:</span> ${formattedDate}</p>
-                            <p><span class="font-semibold">Giờ bắt đầu:</span> ${order.start_time}</p>
-                            <p><span class="font-semibold">Giờ kết thúc:</span> ${order.end_time}</p>
+
+                        <div class="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl mb-6 border border-gray-100">
+                            <div>
+                                <p class="text-gray-400 text-[10px] font-bold uppercase">Bắt đầu</p>
+                                <p class="text-gray-700 font-semibold text-sm">🕒 ${order.start_time}</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-[10px] font-bold uppercase">Kết thúc</p>
+                                <p class="text-gray-700 font-semibold text-sm">🕒 ${order.end_time}</p>
+                            </div>
                         </div>
-                        <div class="invoice-total">
-                            <span>Tổng tiền:</span>
-                            <span>${order.total_amount}</span>
+
+                        <div class="ticket-edge my-6"></div>
+
+                        <div class="flex flex-col items-center justify-center space-y-4">
+                            <div class="p-2 border-2 border-dashed border-gray-200 rounded-lg">
+                                <img src="${qrCodeUrl}" alt="QR Code" width="120" height="120" />
+                            </div>
+                            <p class="text-[10px] text-gray-400 uppercase font-semibold">Quét để kiểm tra thông tin</p>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-gray-100">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-800 font-bold">Tổng cộng:</span>
+                                <span class="text-xl font-black text-green-600">${totalAmount}</span>
+                            </div>
                         </div>
                     </div>
-                </body>
-            </html>
-        `;
-    
-        html2pdf().from(htmlContent).save(`invoice_${order.id}.pdf`);
+
+                    <div class="bg-gray-50 p-4 text-center border-t border-gray-100">
+                        <p class="text-gray-400 text-[10px] italic">Vui lòng mang theo vé này khi đến sân</p>
+                        <p class="text-gray-400 text-[9px] mt-1 italic">In lúc: ${printDate}</p>
+                    </div>
+                </div>
+            </body>
+        </html>
+    `;
+
+    const opt = {
+        margin: 0,
+        filename: `Ve_SanBong_PTIT_${order.id}.pdf`,
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 3, useCORS: true }, // useCORS để load được ảnh từ API QR
+        jsPDF: { unit: 'mm', format: [140, 210], orientation: 'portrait' } // Format khổ nhỏ cho giống vé
     };
 
-    
+    html2pdf().set(opt).from(htmlContent).save();
+};
+
+    //ham thanh toan 
+const handlePayBooking = async (order) => {
+    console.log("===== CLICK THANH TOAN =====");
+    console.log("order =", order);
+    console.log("bookingId =", order.id);
+    console.log("amount =", order.total_amount);
+
+    try {
+        const res = await axiosClient.post("/vnpay/create-payment", {
+            bookingId: order.id,
+            amount: order.total_amount
+        });
+
+        console.log("RESPONSE FROM BACKEND =", res);
+        
+        window.location.href = res.paymentUrl;
+    } catch (err) {
+        console.error("PAY ERROR =", err);
+        notification.error({
+            message: "Thanh toán thất bại",
+        });
+    }
+};
+
       
 
 
@@ -192,6 +247,22 @@ const CartHistory = () => {
                 </span>
             ),
         },
+        //cot thanh toan
+        {
+    title: "Thanh toán",
+    key: "payment",
+    render: (_, record) => (
+        record.status === "pending" ? (
+            <Button
+                type="primary"
+                onClick={() => handlePayBooking(record)}
+            >
+                Thanh toán
+            </Button>
+        ) : null
+    ),
+},
+
         {
             title: 'In hóa đơn',
             dataIndex: 'order',

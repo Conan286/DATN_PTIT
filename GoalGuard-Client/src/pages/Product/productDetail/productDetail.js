@@ -802,7 +802,7 @@ const totalAmount = normalAmount + peakAmount;
                                     </Select>
                                 </Form.Item>
 
-                                <Form.Item
+                                {/* <Form.Item
                                     name="image_qr"
                                     label="Ảnh QR thanh toán"
                                     style={{ marginBottom: 10 }}
@@ -812,7 +812,7 @@ const totalAmount = normalAmount + peakAmount;
                                     ) : (
                                         <span>Ảnh QR không có sẵn</span>
                                     )}
-                                </Form.Item>
+                                </Form.Item> */}
 
 
                             </Spin>

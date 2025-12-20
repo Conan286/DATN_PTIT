@@ -101,6 +101,18 @@ exports.updateBookingStatus = async (req, res) => {
         const { status } = req.body;
         const bookingId = req.params.id;
 
+         if (status === 'rejected') {
+            // Nếu bị từ chối thì xóa booking
+            await db.execute(
+                'DELETE FROM bookings WHERE id = ?',
+                [bookingId]
+            );
+
+            return res.status(200).json({
+                message: 'Booking rejected and deleted successfully'
+            });
+        }
+
         await db.execute('UPDATE bookings SET status = ? WHERE id = ?', [status, bookingId]);
 
         res.status(200).json({ message: 'Booking status updated successfully' });
