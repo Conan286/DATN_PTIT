@@ -19,7 +19,7 @@ import { BackTop, Card, Carousel, Col, Row, Spin } from "antd";
 import Paragraph from "antd/lib/typography/Paragraph";
 import { useHistory } from 'react-router-dom';
 import { numberWithCommas } from "../../utils/common";
-
+import { Rate, Typography } from "antd";
 
 const Home = () => {
 
@@ -174,21 +174,46 @@ const Home = () => {
                                             alt="No Image Available"
                                         />
                                     )}
+
+                                  
                                     <div className='wrapper-products'>
                                         <Paragraph
                                             className='title-product overflow-ellipsis overflow-hidden whitespace-nowrap'
                                         >
                                             {item.name}
                                         </Paragraph>
-
-                                        <div className="truncate">Khu vực: {item.area}</div>
-                                        <div className="truncate">Loại sân: {item.field_type}</div>
-
-                                        <div className="price-amount">
+                                          <div className="price-amount">
                                             <Paragraph className='price-product'>
                                                 {numberWithCommas(Number(item.price))}đ/giờ
                                             </Paragraph>
                                         </div>
+                                          <div className="truncate" style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        {item.avg_rating > 0 ? (
+                          <>
+                            <Rate
+                              allowHalf
+                              disabled
+                              value={item.avg_rating}
+                              style={{ fontSize: 14 }}
+                            />
+                            <span style={{ fontSize: 12, color: "#666" }}>
+                              {item.avg_rating}/5 (   {item.review_count} đánh giá)
+                            </span>
+                          </>
+                        ) : (
+                          <span style={{ fontSize: 12, color: "#999", fontStyle: "italic" }}>
+                            Chưa có đánh giá
+                          </span>
+                        )}
+                      </div>
+                                        <div className="address-multiline">
+                                            Địa Chỉ: {item.description}
+                                        </div>
+
+                                        <div className="truncate">Khu vực: {item.area}</div>
+                                        <div className="truncate">Loại sân: {item.field_type}</div>
+
+                                      
                                     </div>
                                 </div>
 
@@ -199,8 +224,8 @@ const Home = () => {
 
 
                 <div className="heading_slogan">
-                    <div>Tại sao</div>
-                    <div>bạn nên chọn chúng tôi</div>
+                    {/* <div>Tại sao</div> */}
+                    <div>Tiện ích đặt sân</div>
                 </div>
                 <div className="card_wrap container-home container flex justify-center">
                     <div>
@@ -248,19 +273,19 @@ const Home = () => {
                             ]}
                         >
                             <div className="texty-demo-footer">
-                                <Texty>NHANH LÊN! </Texty>
+                                <Texty>HOT! </Texty>
                             </div>
                             <div className="texty-title-footer">
-                                <p>Tham Dự Buổi <strong>Ra Mắt Sân Bóng Mới</strong></p>
+                                <p>Hàng Loạt Sân Thể Thao <strong>Mới Ra Mắt </strong></p>
                             </div>
                             <Row justify="center" style={{ marginBottom: 40, fill: "#FFFFFF" }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="71px" height="11px"> <path fill-rule="evenodd" d="M59.669,10.710 L49.164,3.306 L39.428,10.681 L29.714,3.322 L20.006,10.682 L10.295,3.322 L1.185,10.228 L-0.010,8.578 L10.295,0.765 L20.006,8.125 L29.714,0.765 L39.428,8.125 L49.122,0.781 L59.680,8.223 L69.858,1.192 L70.982,2.895 L59.669,10.710 Z"></path></svg>
                             </Row>
-                            <Row justify="center">
+                            {/* <Row justify="center">
                                 <a href="#" class="footer-button" role="button">
                                     <span>ĐĂNG KÝ NGAY</span>
                                 </a>
-                            </Row>
+                            </Row> */}
                         </QueueAnim>
                     </OverPack>
                 </div>

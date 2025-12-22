@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
-const PaymentSuccess = () => {
+const PaymentOrderSuccess = () => {
     const history = useHistory();
 
     return (
@@ -29,10 +29,10 @@ const PaymentSuccess = () => {
                             key="history" 
                             size="large"
                             icon={<HistoryOutlined />}
-                            onClick={() => history.push('/cart-history')}
+                            onClick={() => history.push('/order-history')}
                             style={{ borderRadius: 8, height: 'auto', padding: '10px 20px' }}
                         >
-                            Lịch sử đặt sân
+                            Lịch sử đặt dịch vụ
                         </Button>,
                         <Button 
                             key="home" 
@@ -67,4 +67,4 @@ const PaymentSuccess = () => {
     );
 };
 
-export default PaymentSuccess;
+export default PaymentOrderSuccess;

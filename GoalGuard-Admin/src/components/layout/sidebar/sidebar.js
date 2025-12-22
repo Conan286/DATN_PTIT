@@ -45,7 +45,7 @@ function Sidebar() {
     },
     {
       key: "asset-management",
-      title: "Quản lý sân bóng",
+      title: "Quản lý sân thể thao",
       link: "/asset-management",
       icon: <ContainerOutlined />
     },
@@ -89,15 +89,15 @@ function Sidebar() {
       link: "/dash-board",
       icon: <DashboardOutlined />
     },
-    {
-      key: "employee-management",
-      title: "Quản lý nhân viên",
-      link: "/employee-management",
-      icon: <UserOutlined />
-    },
+    // {
+    //   key: "employee-management",
+    //   title: "Quản lý nhân viên",
+    //   link: "/employee-management",
+    //   icon: <UserOutlined />
+    // },
     {
       key: "asset-management",
-      title: "Quản lý sân bóng",
+      title: "Quản lý sân",
       link: "/asset-management",
       icon: <ContainerOutlined />
     },
@@ -131,6 +131,12 @@ function Sidebar() {
       link: "/order-list",
       icon:<ShoppingOutlined />
     },
+     {
+    key: "service-order-list",
+    title: "Danh sách đặt dịch vụ",
+    link: "/service-order-list",
+    icon: <ShoppingOutlined />
+  },
   ];
 
   useEffect(() => {

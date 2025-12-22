@@ -95,7 +95,7 @@ const RegisterCustomer = () => {
                                 <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">GOALGUARD!</Divider>
                             </Form.Item>
                             <Form.Item style={{ marginBottom: 16 }}>
-                                <p className="text">Đăng ký tài khoản chủ sân bóng</p>
+                                <p className="text">Đăng ký tài khoản chủ sân</p>
                             </Form.Item>
 
                             <Form.Item

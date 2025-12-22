@@ -60,6 +60,7 @@ const notificationRoutes = require("./app/routers/notificationRoutes");
 const newsRouter = require("./app/routers/newsRouter");
 const employeeRouter = require("./app/routers/employee");
 const reviewRouter = require("./app/routers/reviewRoutes");
+const servicePaymentRouter = require("./app/routers/servicePayment.route");
 
 // ================= USE ROUTES =================
 app.use("/api/auth", authRoute);
@@ -79,13 +80,14 @@ app.use("/api/tournaments", tournamentRouter);
 app.use("/api/tournament-results", tournamentResultRouter);
 app.use("/api/booking", bookingRouter);
 app.use("/api/orders", orderRouter);
+// app.use("/api/service-orders", serviceOrderRouter);
 app.use("/api/statistics", statisticsRouter);
 app.use("/api/residence-rules", residenceRulesRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/news", newsRouter);
 app.use("/api/employee", employeeRouter);
 app.use("/api/reviews", reviewRouter);
-
+app.use("/api/service-payment", servicePaymentRouter);
 // ================= START SERVER =================
 const PORT = process.env.PORT || _CONST.PORT;
 

@@ -98,3 +98,38 @@ exports.searchOrders = async (req, res) => {
         res.status(500).json({ message: 'Error searching orders' });
     }
 };
+
+
+// chủ ssan sem dv
+exports.getOrdersByOwner = async (req, res) => {
+  const userId = req.params.userId;
+
+  const [rows] = await db.execute(`
+    SELECT 
+      o.*,
+      u.username AS user_name,
+      u.phone,
+      p.name AS product_name
+    FROM orders o
+    JOIN courts c ON o.court_id = c.id
+    JOIN users u ON o.user_id = u.id
+    JOIN products p ON o.product_id = p.id
+    WHERE c.id_users = ?
+    ORDER BY o.created_at DESC
+  `, [userId]);
+
+  res.json(rows);
+};
+
+//
+exports.updateOrderStatus = async (req, res) => {
+  const { status } = req.body;
+  const id = req.params.id;
+
+  const [result] = await db.execute(
+    "UPDATE orders SET status = ? WHERE id = ?",
+    [status, id]
+  );
+
+  res.json({ success: result.affectedRows === 1 });
+};

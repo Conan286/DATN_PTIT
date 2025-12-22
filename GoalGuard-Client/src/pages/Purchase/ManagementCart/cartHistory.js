@@ -79,7 +79,7 @@ const CartHistory = () => {
     const htmlContent = `
         <html>
             <head>
-                <title>Hóa đơn đặt sân</title>
+                <title>Vé đặt sân</title>
                 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -117,7 +117,7 @@ const CartHistory = () => {
                                 <p class="text-base font-bold text-gray-800">${order.name}</p>
                             </div>
                             <div class="text-right">
-                                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-tight">Ngày đá</p>
+                                <p class="text-gray-400 text-[10px] uppercase font-bold tracking-tight">Ngày tham gia</p>
                                 <p class="text-base font-bold text-gray-800">${formattedDate}</p>
                             </div>
                         </div>
@@ -264,7 +264,7 @@ const handlePayBooking = async (order) => {
 },
 
         {
-            title: 'In hóa đơn',
+            title: 'In vé đặt sân',
             dataIndex: 'order',
             key: 'order',
             render: (text, record) => (
@@ -273,7 +273,7 @@ const handlePayBooking = async (order) => {
                         type="primary"
                         onClick={() => handlePrintInvoice(record)}
                     >
-                        Xuất hóa đơn
+                        Xuất vé
                     </Button>
                 ) : null
             ),
@@ -331,7 +331,7 @@ const handlePayBooking = async (order) => {
                                     <span>Trang chủ</span>
                                 </Breadcrumb.Item>
                                 <Breadcrumb.Item href="">
-                                    <span>Quản lý sân bóng </span>
+                                    <span>Quản lý đơn đặt sân </span>
                                 </Breadcrumb.Item>
                             </Breadcrumb>
                         </div>

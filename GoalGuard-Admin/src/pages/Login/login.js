@@ -162,7 +162,7 @@ const Login = () => {
               </Button>
             </Form.Item>
             <Form.Item >
-              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} onClick={() => handleLink()} className="register"><span style={{ marginRight: 5 }}>Bạn là chủ sân bóng? </span><Tag color="blue" className='register'>Đăng ký ngay</Tag></div>
+              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} onClick={() => handleLink()} className="register"><span style={{ marginRight: 5 }}>Bạn là chủ sân? </span><Tag color="blue" className='register'>Đăng ký ngay</Tag></div>
             </Form.Item>
             <Form.Item style={{ textAlign: 'center' }}>
               <a onClick={showForgotPasswordModal}>Quên mật khẩu?</a>

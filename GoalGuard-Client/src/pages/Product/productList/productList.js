@@ -111,7 +111,7 @@ const ProductList = () => {
                   <span>Trang chủ</span>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <span>Sản phẩm </span>
+                  <span>Tìm Sân </span>
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>
@@ -133,7 +133,7 @@ const ProductList = () => {
             <div className="list-products container" style={{ marginTop: 0, marginBottom: 50 }}>
               <Row>
                 <Col span={12}>
-                  <h3 style={{ paddingTop: "30px" }}>Danh sách sân bóng</h3>
+                  <h3 style={{ paddingTop: "30px" }}>Danh sách sân</h3>
                 </Col>
 
                 <Col span={12}>
@@ -171,7 +171,7 @@ const ProductList = () => {
                     </Select>
 
                     <Button type="primary" onClick={handleSearchClick}>
-                      Tất cả sân bóng
+                      Tất cả sân 
                     </Button>
                   </div>
                 </Col>

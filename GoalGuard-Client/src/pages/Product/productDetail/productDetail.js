@@ -362,7 +362,7 @@ const totalAmount = normalAmount + peakAmount;
     };
 
     const isButtonDisabled = productDetail.status !== 'active' ? true : false;
-    const buttonText = isButtonDisabled ? 'Sân bóng đang đóng' : 'Đặt sân nhanh';
+    const buttonText = isButtonDisabled ? 'Sân đang đóng' : 'Đặt sân nhanh';
 
     function disabledDate(current) {
         // Vô hiệu hóa tất cả các ngày quá khứ
@@ -382,7 +382,7 @@ const totalAmount = normalAmount + peakAmount;
                                 </Breadcrumb.Item>
                                 <Breadcrumb.Item href="http://localhost:3500/product-list/643cd88879b4192efedda4e6">
                                     {/* <AuditOutlined /> */}
-                                    <span>sân bóng</span>
+                                    <span>sân thể thao</span>
                                 </Breadcrumb.Item>
                                 <Breadcrumb.Item href="">
                                     <span>{productDetail.name}</span>
@@ -564,7 +564,7 @@ const totalAmount = normalAmount + peakAmount;
 
 
  <div className="price" style={{ marginTop: 20, fontSize: 20 }}>
-                            <h1 className="product_name" style={{ fontWeight: 'bold' }}>Sân bóng bạn có thể quan tâm</h1>
+                            <h1 className="product_name" style={{ fontWeight: 'bold' }}>Sân bạn có thể quan tâm</h1>
                         </div>
                             
                          
@@ -797,7 +797,7 @@ const totalAmount = normalAmount + peakAmount;
                                     style={{ marginBottom: 10 }}
                                 >
                                     <Select style={{ width: '100%' }}>
-                                        <Select.Option value="Thanh toán trực tiếp">Thanh toán trực tiếp</Select.Option>
+                                        <Select.Option value="Thanh toán trực tiếp">Thanh toán VNPAY</Select.Option>
                                         <Select.Option value="Chuyển khoản">Chuyển khoản</Select.Option>
                                     </Select>
                                 </Form.Item>

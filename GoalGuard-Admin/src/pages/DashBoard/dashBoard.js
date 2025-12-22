@@ -305,7 +305,7 @@ const DashBoard = () => {
                                         <div className='card_number'>
                                             <div>
                                                 <div className='number_total'>{statisticListSeller?.courts?.length}</div>
-                                                <div className='title_total'>Số sân bóng</div>
+                                                <div className='title_total'>Số sân</div>
                                             </div>
                                             <div>
                                                 <ContactsTwoTone style={{ fontSize: 48 }} />

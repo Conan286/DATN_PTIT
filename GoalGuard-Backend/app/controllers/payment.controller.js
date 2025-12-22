@@ -54,7 +54,7 @@ exports.vnpayReturn = async (req, res) => {
 
         // 2. Lấy ID đơn hàng
         const bookingId = vnpParams['vnp_TxnRef'].split("_")[0];
-        console.log("Đang cố gắng cập nhật Booking ID:", bookingId);
+        console.log("Booking ID:", bookingId);
         const status = 'final';
         // 3. Thực hiện Update (Đoạn này dễ chết nhất do lỗi kết nối DB)
         try {

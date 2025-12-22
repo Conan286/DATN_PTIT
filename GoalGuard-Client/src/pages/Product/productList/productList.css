@@ -26,7 +26,7 @@
 
 /* CSS cho mỗi phần tử danh mục */
 .menu-item-1 {
-    flex: 0 0 calc(33.33% - 10px);
+    flex: 0 0 calc(25% - 10px);
     /* Hiển thị 3 cột trên mỗi hàng */
     background-color: #EEEEEE;
     border: 1px solid #ddd;

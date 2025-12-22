@@ -12,7 +12,8 @@ import CartHistory from '../pages/Purchase/ManagementCart/cartHistory';
 import Contact from '../pages/Contact/contact';
 import OrderHistory from "../pages/OrderHistory/OrderHistory";
 import PaymentSuccess from "../pages/payment/PaymentSuccess";
-
+import PaymentOrderSuccess from "../pages/PaymentOrderSuccess/PaymentOrderSuccess";
+import PaymentOrderFail from "../pages/PaymentOrderFail/PaymentOrderFail"
 import { Layout } from 'antd';
 import { withRouter } from "react-router";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -53,9 +54,16 @@ const RouterURL = withRouter(({ location }) => {
                     <PrivateRoute exact path="/payment-success">
                     <PaymentSuccess />
                 </PrivateRoute>
+                  <PrivateRoute exact path="/paymentorder-success">
+                    <PaymentOrderSuccess />
+                </PrivateRoute>
                 <PrivateRoute exact path="/payment-fail">
                     {/* Bạn có thể tạo component PaymentFail riêng hoặc dùng chung */}
                     <div>Thanh toán thất bại</div> 
+                </PrivateRoute>
+
+                  <PrivateRoute exact path="/paymentorder-fail">
+                    <PaymentOrderFail />
                 </PrivateRoute>
                     <PrivateRoute exact path="/product-list/:id">
                         <ProductList />
@@ -178,11 +186,16 @@ const RouterURL = withRouter(({ location }) => {
                     <Route exact path="/payment-success">
                         <PrivateContainer />
                     </Route>
-
+                      <Route exact path="/paymentorder-success">
+                        <PrivateContainer />
+                    </Route>
                     <Route exact path="/payment-fail">
                         <PrivateContainer />
                     </Route>
-
+                    {/* paymentorder-fail */}
+                     <Route exact path="/paymentorder-fail">
+                        <PrivateContainer />
+                    </Route>
 
                     <Route exact path="/order-history">
                         <PrivateContainer />

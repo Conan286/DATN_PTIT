@@ -178,6 +178,15 @@ const OrderList = lazy(() => {
         .then(([moduleExports]) => moduleExports);
 });
 
+const ServiceOrderList = lazy(() => {
+    return Promise.all([
+        import('../pages/ServiceOrderList/ServiceOrderList'),
+        new Promise(resolve => setTimeout(resolve, 0))
+    ]).then(([moduleExports]) => moduleExports);
+});
+
+
+
 const RouterURL = withRouter(({ location }) => {
 
 
@@ -218,6 +227,13 @@ const RouterURL = withRouter(({ location }) => {
                                 <OrderList />
                             </Suspense>
                         </PrivateRoute>
+
+                        <PrivateRoute exact path="/service-order-list">
+                        <Suspense fallback={<LoadingScreen />}>
+                            <ServiceOrderList />
+                        </Suspense>
+                    </PrivateRoute>
+
 
                         <PrivateRoute exact path="/profile">
                             <Suspense fallback={<LoadingScreen />}>
@@ -440,6 +456,10 @@ const RouterURL = withRouter(({ location }) => {
                     <Route exact path="/order-list">
                         <DefaultContainer />
                     </Route>
+                    <Route exact path="/service-order-list">
+                    <DefaultContainer />
+                </Route>
+
 
                     <Route exact path="/employee-management">
                         <DefaultContainer />

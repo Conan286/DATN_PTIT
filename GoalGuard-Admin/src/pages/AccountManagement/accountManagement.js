@@ -32,7 +32,7 @@ const AccountManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
+            title: 'STT',
             dataIndex: 'id',
             key: 'index',
             render: (value, item, index) => (

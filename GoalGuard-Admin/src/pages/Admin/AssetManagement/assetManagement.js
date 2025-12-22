@@ -71,7 +71,7 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tên sân bóng không được trùng',
+                            'Tên sân không được trùng',
                     });
                     setLoading(false);
                     return;
@@ -80,14 +80,14 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo sân bóng thất bại',
+                            'Tạo sân thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo sân bóng thành công',
+                            'Tạo sân thành công',
                     });
                     setOpenModalCreate(false);
                     handleCategoryList();
@@ -118,7 +118,7 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tên sân bóng không được trùng',
+                            'Tên sân không được trùng',
                     });
                     setLoading(false);
                     return;
@@ -128,14 +128,14 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa sân bóng thất bại',
+                            'Chỉnh sửa sân thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa sân bóng thành công',
+                            'Chỉnh sửa sân thành công',
                     });
                     setUploadFile();
                     handleCategoryList();
@@ -219,7 +219,7 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa sân bóng thất bại',
+                            'Xóa sân thất bại',
 
                     });
                     setLoading(false);
@@ -228,7 +228,7 @@ const AssetManagement = () => {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa sân bóng thành công',
+                            'Xóa sân thành công',
 
                     });
                     handleCategoryList();
@@ -337,7 +337,7 @@ const AssetManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
+            title: 'STT',
             key: 'index',
             render: (text, record, index) => index + 1,
         },
@@ -415,7 +415,7 @@ const AssetManagement = () => {
                         {userData.role != "isSeller" ? (
                             <>
                                 <Popconfirm
-                                    title="Bạn muốn phê duyệt sân bóng này?"
+                                    title="Bạn muốn phê duyệt sân này?"
                                     onConfirm={() => handleUnBanAccount(record)}
                                     okText="Yes"
                                     cancelText="No"
@@ -429,7 +429,7 @@ const AssetManagement = () => {
                                     </Button>
                                 </Popconfirm>
                                 <Popconfirm
-                                    title="Bạn muốn từ chối sân bóng này?"
+                                    title="Bạn muốn từ chối sân này?"
                                     onConfirm={() => handleBanAccount(record)}
                                     okText="Yes"
                                     cancelText="No"
@@ -453,7 +453,7 @@ const AssetManagement = () => {
                                 >{"Chỉnh sửa"}
                                 </Button>
                                 <Popconfirm
-                                    title="Bạn có chắc chắn xóa sân bóng này?"
+                                    title="Bạn có chắc chắn xóa sân này?"
                                     onConfirm={() => handleDeleteCategory(record.id)}
                                     okText="Yes"
                                     cancelText="No"
@@ -544,7 +544,7 @@ const AssetManagement = () => {
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />
-                                <span>Quản lý sân bóng</span>
+                                <span>Quản lý sân </span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
@@ -571,7 +571,7 @@ const AssetManagement = () => {
                                             <Space>
                                                 {userData.role !== "isAdmin" ?
 
-                                                    <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo sân bóng</Button> : null}
+                                                    <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo sân</Button> : null}
 
                                             </Space>
                                         </Row>
@@ -589,7 +589,7 @@ const AssetManagement = () => {
                 </div>
 
                 <Modal
-                    title="Tạo sân bóng mới"
+                    title="Tạo sân mới"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -748,7 +748,7 @@ const AssetManagement = () => {
                 </Modal>
 
                 <Modal
-                    title="Chỉnh sân bóng"
+                    title="Chỉnh sửa sân"
                     visible={openModalUpdate}
                     style={{ top: 100 }}
                     onOk={() => {
