@@ -61,7 +61,7 @@ const newsRouter = require("./app/routers/newsRouter");
 const employeeRouter = require("./app/routers/employee");
 const reviewRouter = require("./app/routers/reviewRoutes");
 const servicePaymentRouter = require("./app/routers/servicePayment.route");
-
+const chatbotRouter = require('./app/routers/chatRouter');
 // ================= USE ROUTES =================
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
@@ -88,6 +88,9 @@ app.use("/api/news", newsRouter);
 app.use("/api/employee", employeeRouter);
 app.use("/api/reviews", reviewRouter);
 app.use("/api/service-payment", servicePaymentRouter);
+app.use('/api/chatbot', chatbotRouter);
+
+
 // ================= START SERVER =================
 const PORT = process.env.PORT || _CONST.PORT;
 

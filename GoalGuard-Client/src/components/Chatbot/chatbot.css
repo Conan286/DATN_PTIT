@@ -1,0 +1,212 @@
+/* =========================
+   CHATBOT FLOAT ICON
+========================= */
+.chatbot-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1677ff, #00c6ff);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease;
+  z-index: 1000;
+}
+
+.chatbot-icon:hover {
+  transform: scale(1.1);
+}
+
+/* =========================
+   CHATBOT BOX
+========================= */
+.chatbot-box {
+  position: fixed;
+  bottom: 95px;
+  right: 25px;
+  width: 360px;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+.chatbot-header {
+  background: linear-gradient(135deg, #1677ff, #00c6ff);
+  color: white;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.online-dot {
+  width: 9px;
+  height: 9px;
+  background: #44bec7;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* HEADER ACTION ICONS */
+.action-btn {
+  margin-left: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.action-btn:hover {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+.action-btn.delete:hover {
+  color: #ff4d4f; /* đỏ Ant Design */
+}
+
+/* =========================
+   BODY
+========================= */
+.chatbot-body {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f0f2f5;
+}
+
+.message-wrapper {
+  display: flex;
+  max-width: 80%;
+}
+
+.message-wrapper.user {
+  align-self: flex-end;
+}
+
+.message-wrapper.bot {
+  align-self: flex-start;
+}
+
+.message-bubble {
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* USER MESSAGE */
+.user .message-bubble {
+  background: #1677ff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* BOT MESSAGE */
+.bot .message-bubble {
+  background: white;
+  color: #1c1e21;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* WELCOME */
+.bot-welcome {
+  text-align: center;
+  font-size: 12px;
+  color: #65676b;
+  margin-top: 10px;
+}
+
+/* =========================
+   TYPING EFFECT
+========================= */
+.typing {
+  font-weight: bold;
+  letter-spacing: 2px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* =========================
+   FOOTER
+========================= */
+.chatbot-footer {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.chatbot-footer input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  background: #f0f2f5;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+.chatbot-footer button {
+  background: none;
+  border: none;
+  color: #1677ff;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.chatbot-footer button:disabled {
+  color: #bcc0c4;
+}
+
+.chatbot-footer button:hover:not(:disabled) {
+  transform: scale(1.1);
+}

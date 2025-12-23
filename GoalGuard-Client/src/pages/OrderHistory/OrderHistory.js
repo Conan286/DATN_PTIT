@@ -234,7 +234,7 @@ const OrderHistory = () => {
     printWindow.document.write(htmlContent);
     printWindow.document.close();
     printWindow.focus();
-    printWindow.print();
+    
 };
 
 

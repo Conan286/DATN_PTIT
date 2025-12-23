@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2025 at 12:33 PM
+-- Generation Time: Dec 23, 2025 at 03:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -111,7 +111,9 @@ INSERT INTO `bookings` (`id`, `user_id`, `court_id`, `booking_date`, `start_time
 (46, 13, 33, '2025-12-24', '17:00:00', '19:00:00', 'Thanh toán trực tiếp', 6250000.00, 'pending'),
 (47, 13, 6, '2025-12-22', '18:00:00', '21:00:00', 'Thanh toán trực tiếp', 1200000.00, 'final'),
 (48, 13, 13, '2025-12-24', '10:00:00', '14:00:00', 'Thanh toán trực tiếp', 800000.00, 'final'),
-(49, 13, 6, '2025-12-30', '09:00:00', '11:00:00', 'Thanh toán trực tiếp', 640000.00, 'pending');
+(49, 13, 6, '2025-12-30', '09:00:00', '11:00:00', 'Thanh toán trực tiếp', 640000.00, 'pending'),
+(50, 13, 37, '2025-12-24', '07:00:00', '10:00:00', 'Thanh toán trực tiếp', 840000.00, 'pending'),
+(51, 13, 28, '2025-12-24', '15:00:00', '19:00:00', 'Thanh toán trực tiếp', 1187500.00, 'final');
 
 -- --------------------------------------------------------
 
@@ -172,7 +174,10 @@ INSERT INTO `courts` (`id`, `name`, `id_areas`, `id_field_types`, `id_users`, `a
 (35, 'Sân Bóng Rổ PTIT', 2, 5, 4, 'approved', 'active', 260000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766377755110sonsanbongro%20(2).jpg?alt=media&token=1050525a-9912-479a-8090-930ca32e249a', 'Km10 Nguyễn Trãi, P. Mộ Lao, Hà Đông, Hà Nội'),
 (36, 'Sân Cầu Lông Nhân Văn', 1, 1, 5, 'approved', 'active', 340000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766378521457caulong.jpg?alt=media&token=b80cc4b0-e11e-41fe-9c79-72ff14db2358', '338 Đ. Nguyễn Trãi, Thanh Xuân Trung, Thanh Xuân, Hà Nội'),
 (37, 'Hạ Đình Yard', 1, 2, 5, 'approved', 'active', 280000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766378756980timthumb.jpg?alt=media&token=04a70bef-d2c6-4259-aa93-9d09f2b54769', 'Ng. 168 Đ. Nguyễn Xiển, Hạ Đình, Thanh Xuân, Hà Nội'),
-(38, 'Kim Giang Stadium', 1, 2, 5, 'approved', 'active', 260000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766378889597timthumb.jpg?alt=media&token=f4bfbbe9-6b91-40f6-9c36-fc74e687ae75', 'Số 926 đường bờ sông Kim Giang, P. Thanh Xuân, Hà Nội');
+(38, 'Kim Giang Stadium', 1, 2, 5, 'approved', 'active', 260000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766378889597timthumb.jpg?alt=media&token=f4bfbbe9-6b91-40f6-9c36-fc74e687ae75', 'Số 926 đường bờ sông Kim Giang, P. Thanh Xuân, Hà Nội'),
+(39, 'Thượng Đình Arena', 1, 2, 4, 'approved', 'active', 340000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766455218345timthumb.jpg?alt=media&token=b57cc1f5-c5da-4f04-a9e0-f837f8e7e800', '129 Nguyễn Trãi, Thượng Đình, Thanh Xuân, Hà Nội'),
+(40, 'Sân Cầu Lông Văn Quán', 2, 1, 4, 'approved', 'active', 290000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766456548704caulong.jpg?alt=media&token=726f107f-51fe-40f6-aa68-16a63c105bcd', '14BT8 khu đô thị Văn Quán, Phường Hà Đông, Thành phố Hà Nội'),
+(41, 'Sân bóng rổ Yên Nghĩa ', 2, 5, 4, 'approved', 'active', 200000.00, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766456667175sonsanbongro%20(2).jpg?alt=media&token=75a2b567-f445-4285-aa4d-bcddce59c1a2', 'Số 6, đường Trần Phú, phường Yên Nghĩa, quận Hà Đông, Hà Nội');
 
 -- --------------------------------------------------------
 
@@ -299,10 +304,10 @@ INSERT INTO `orders` (`id`, `user_id`, `court_id`, `product_id`, `quantity`, `to
 (3, 12, 4, 1, 2, 40000.00, 'Thanh toán trực tiếp', '2025-12-16 08:09:26', 'pending'),
 (4, 12, 4, 3, 1, 290000.00, 'Thanh toán trực tiếp', '2025-12-16 08:10:53', 'pending'),
 (5, 12, 4, 4, 1, 5000.00, 'Thanh toán trực tiếp', '2025-12-16 08:12:37', 'final'),
-(6, 12, 17, 2, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-16 08:13:16', 'pending'),
+(6, 12, 17, 2, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-16 08:13:16', 'final'),
 (7, 12, 3, 1, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-16 08:13:35', 'pending'),
 (8, 13, 20, 1, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-16 08:15:09', 'final'),
-(9, 13, 4, 5, 1, 40000.00, 'Thanh toán trực tiếp', '2025-12-16 08:57:12', 'pending'),
+(9, 13, 4, 5, 1, 40000.00, 'Thanh toán trực tiếp', '2025-12-16 08:57:12', 'final'),
 (10, 13, 3, 1, 3, 60000.00, 'Thanh toán trực tiếp', '2025-12-16 08:57:39', 'final'),
 (11, 13, 3, 5, 3, 120000.00, 'Thanh toán trực tiếp', '2025-12-16 08:57:43', 'final'),
 (12, 13, 9, 5, 1, 40000.00, 'Thanh toán trực tiếp', '2025-12-16 09:54:37', 'final'),
@@ -325,9 +330,11 @@ INSERT INTO `orders` (`id`, `user_id`, `court_id`, `product_id`, `quantity`, `to
 (29, 13, 6, 4, 1, 5000.00, 'Thanh toán trực tiếp', '2025-12-22 10:04:54', 'final'),
 (30, 13, 17, 4, 1, 5000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:00', 'final'),
 (31, 13, 17, 4, 2, 10000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:07', 'final'),
-(32, 13, 17, 7, 1, 10000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:10', 'pending'),
+(32, 13, 17, 7, 1, 10000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:10', 'final'),
 (33, 13, 17, 6, 1, 200000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:12', 'pending'),
-(34, 13, 17, 2, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:14', 'pending');
+(34, 13, 17, 2, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:14', 'pending'),
+(35, 13, 4, 5, 1, 40000.00, 'Thanh toán trực tiếp', '2025-12-23 01:47:08', 'pending'),
+(36, 13, 4, 1, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-23 01:47:10', 'final');
 
 -- --------------------------------------------------------
 
@@ -379,7 +386,8 @@ INSERT INTO `products` (`id`, `name`, `price`, `quantity`, `status`, `item_statu
 (4, 'Vé Gửi Xe', 5000.00, 2000, 'active', 'new', 3, 4, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1765815813633parking-left-logo-png_seeklogo-281448.png?alt=media&token=8668abf3-4cdc-4918-9855-87bd8556f220'),
 (5, 'Áo Thi Đấu', 40000.00, 10000, 'active', 'new', 4, 2, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/176587350290373dfc7ae58220a7bb1fa7269620354bf.jpg?alt=media&token=22ddc2da-9b96-44c2-8cdb-2c0d178e38b4'),
 (6, 'Trọng Tài', 200000.00, 1000, 'active', 'new', 5, 4, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/17663031503361439419133-anh-1.jpg?alt=media&token=d33a027e-9795-45fb-933e-15754ac8c782'),
-(7, 'Nước Suối', 10000.00, 10000, 'active', 'new', 6, 4, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766307916592vinawater-nuoc-la-gi.webp?alt=media&token=7ba21dd5-b243-4d68-a761-134da9ff1b10');
+(7, 'Nước Suối', 10000.00, 10000, 'active', 'new', 6, 4, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766307916592vinawater-nuoc-la-gi.webp?alt=media&token=7ba21dd5-b243-4d68-a761-134da9ff1b10'),
+(8, 'Áo Tập Luyện', 60000.00, 6000, 'active', 'new', 2, 4, 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/176645497834073dfc7ae58220a7bb1fa7269620354bf.jpg?alt=media&token=b299d274-ce24-43d8-87aa-db94024e252f');
 
 -- --------------------------------------------------------
 
@@ -482,7 +490,8 @@ INSERT INTO `reviews` (`id_reviews`, `rating`, `review_text`, `id_customer`, `id
 (45, 4, 'sân mới và đẹp', 13, 27, '2025-12-16 15:11:50'),
 (46, 4, 'SÂN BÓNG CÔNG NGHỆ HIỆN ĐẠI VÀ MỚI', 13, 30, '2025-12-17 07:36:14'),
 (47, 4, 'ptit', 8, 3, '2025-12-19 00:37:53'),
-(49, 5, 'Sân vận động bao gồm 4 khán đài, được xây dựng theo hình lòng chảo có 20 bậc chứa', 13, 33, '2025-12-21 11:46:18');
+(49, 5, 'Sân vận động bao gồm 4 khán đài, được xây dựng theo hình lòng chảo có 20 bậc chứa', 13, 33, '2025-12-21 11:46:18'),
+(50, 4, 'Sân bóng có dịch vụ khá tốt tại Thanh Xuân', 13, 37, '2025-12-22 13:04:55');
 
 -- --------------------------------------------------------
 
@@ -705,13 +714,13 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `courts`
 --
 ALTER TABLE `courts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -741,7 +750,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `password_reset_tokens`
@@ -753,7 +762,7 @@ ALTER TABLE `password_reset_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product_types`
@@ -771,7 +780,7 @@ ALTER TABLE `residence_rules`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id_reviews` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_reviews` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tournaments`

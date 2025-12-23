@@ -243,6 +243,7 @@ const handleOrderService = async (service) => {
                 });
                 await courtsManagementApi.getAllCourts().then((item) => {
                     setRecommend(item);
+                    
                 });
 
                 setLoading(false);
@@ -436,6 +437,7 @@ const totalAmount = normalAmount + peakAmount;
                                 className="describe_detail_description"
                                 dangerouslySetInnerHTML={{ __html: productDetail.description }}
                             ></div>
+                           
                         </div>
                         <div className="describe">
                         {/*  ĐÁNH GIÁ SÂN */}

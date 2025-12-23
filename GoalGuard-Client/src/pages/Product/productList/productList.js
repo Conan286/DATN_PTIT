@@ -1,7 +1,8 @@
 import {
   Breadcrumb, Button, Card, Col, Form,
-  Row, Spin, Select
+  Row, Spin, Select,  Pagination
 } from "antd";
+
 import Paragraph from "antd/lib/typography/Paragraph";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams, useRouteMatch } from "react-router-dom";
@@ -18,8 +19,12 @@ const ProductList = () => {
   const [categories, setCategories] = useState([]);
 
   const [searchKeyword, setSearchKeyword] = useState("");  
-  const [fieldTypes, setFieldTypes] = useState([]);         // 🟩 DANH SÁCH LOẠI SÂN
-  const [selectedType, setSelectedType] = useState("");     // 🟩 LOẠI SÂN ĐÃ CHỌN
+  const [fieldTypes, setFieldTypes] = useState([]);         // DANH SÁCH LOẠI SÂN
+  const [selectedType, setSelectedType] = useState("");     //  LOẠI SÂN ĐÃ CHỌN
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 12; // 12 sân / phân trang
+
+
 
   let { id } = useParams();
   const history = useHistory();
@@ -76,6 +81,7 @@ const ProductList = () => {
         const filteredResponse = courtResponse.filter(
           (item) => item.approval_status !== "pending"
         );
+        
         setProductDetail(filteredResponse);
 
         await loadFieldTypes(); // 🟩 load loại sân
@@ -99,6 +105,10 @@ const ProductList = () => {
 
     return matchKeyword && matchType;
   });
+  const startIndex = (currentPage - 1) * pageSize;
+const endIndex = startIndex + pageSize;
+const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
 
   return (
     <div>
@@ -152,7 +162,9 @@ const ProductList = () => {
                       className="ant-input"
                       style={{ width: 250 }}
                       value={searchKeyword}
-                      onChange={(e) => setSearchKeyword(e.target.value)}
+                      onChange={(e) => {setSearchKeyword(e.target.value);
+                        setCurrentPage(1);
+                      }}
                     />
 
                     {/* dropdown lọc theo loại sân */}
@@ -161,7 +173,9 @@ const ProductList = () => {
                       style={{ width: 160 }}
                       value={selectedType}
                       allowClear
-                      onChange={(v) => setSelectedType(v || "")}
+                      onChange={(v) =>{ setSelectedType(v || "");
+                        setCurrentPage(1);
+                      }}
                     >
                       {fieldTypes.map((type) => (
                         <Option key={type} value={type}>
@@ -186,7 +200,9 @@ const ProductList = () => {
                   gridGap: "25px",
                 }}
               >
-                {filteredProducts.slice(0, 40).map((item) => (
+                
+               {paginatedProducts.map((item) => (
+
                   <div
                     className="col-product"
                     onClick={() => handleReadMore(item.id)}
@@ -241,6 +257,15 @@ const ProductList = () => {
                   </div>
                 ))}
               </div>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: 30 }}>
+  <Pagination
+    current={currentPage}
+    pageSize={pageSize}
+    total={filteredProducts.length}
+    onChange={(page) => setCurrentPage(page)}
+    showSizeChanger={false}
+  />
+</div>
 
             </div>
           </div>

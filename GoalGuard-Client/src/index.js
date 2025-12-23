@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import { BrowserRouter } from 'react-router-dom';
 import Router from './routers/routes';
 import reportWebVitals from './reportWebVitals';
+import Chatbot from "./components/Chatbot/Chatbot";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Suspense fallback={null}>
         <BrowserRouter>
           <Router />
+           <Chatbot />
         </BrowserRouter>
       </Suspense>
     </div>
