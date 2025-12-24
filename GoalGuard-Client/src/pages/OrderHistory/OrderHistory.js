@@ -120,7 +120,7 @@ const OrderHistory = () => {
 
 //in ve
  {
-            title: 'In vé đặt sân',
+            title: 'In vé ',
             dataIndex: 'order',
             key: 'order',
             render: (text, record) => (

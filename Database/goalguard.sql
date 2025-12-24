@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2025 at 03:12 PM
+-- Generation Time: Dec 24, 2025 at 02:49 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -113,7 +113,13 @@ INSERT INTO `bookings` (`id`, `user_id`, `court_id`, `booking_date`, `start_time
 (48, 13, 13, '2025-12-24', '10:00:00', '14:00:00', 'Thanh toán trực tiếp', 800000.00, 'final'),
 (49, 13, 6, '2025-12-30', '09:00:00', '11:00:00', 'Thanh toán trực tiếp', 640000.00, 'pending'),
 (50, 13, 37, '2025-12-24', '07:00:00', '10:00:00', 'Thanh toán trực tiếp', 840000.00, 'pending'),
-(51, 13, 28, '2025-12-24', '15:00:00', '19:00:00', 'Thanh toán trực tiếp', 1187500.00, 'final');
+(51, 13, 28, '2025-12-24', '15:00:00', '19:00:00', 'Thanh toán trực tiếp', 1187500.00, 'final'),
+(52, 9, 12, '2025-12-26', '07:00:00', '09:00:00', 'Thanh toán trực tiếp', 600000.00, 'pending'),
+(53, 9, 38, '2025-12-25', '09:00:00', '12:00:00', 'Thanh toán trực tiếp', 780000.00, 'final'),
+(54, 9, 17, '2025-12-25', '10:00:00', '12:00:00', 'Thanh toán trực tiếp', 300000.00, 'final'),
+(55, 9, 17, '2025-12-25', '16:00:00', '18:00:00', 'Thanh toán trực tiếp', 375000.00, 'pending'),
+(56, 9, 1, '2025-12-24', '15:30:00', '16:00:00', 'Thanh toán trực tiếp', 60000.00, 'pending'),
+(57, 10, 27, '2026-01-01', '15:00:00', '18:00:00', 'Thanh toán trực tiếp', 700000.00, 'final');
 
 -- --------------------------------------------------------
 
@@ -334,7 +340,11 @@ INSERT INTO `orders` (`id`, `user_id`, `court_id`, `product_id`, `quantity`, `to
 (33, 13, 17, 6, 1, 200000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:12', 'pending'),
 (34, 13, 17, 2, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-22 10:17:14', 'pending'),
 (35, 13, 4, 5, 1, 40000.00, 'Thanh toán trực tiếp', '2025-12-23 01:47:08', 'pending'),
-(36, 13, 4, 1, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-23 01:47:10', 'final');
+(36, 13, 4, 1, 1, 20000.00, 'Thanh toán trực tiếp', '2025-12-23 01:47:10', 'final'),
+(37, 12, 6, 8, 1, 60000.00, 'Thanh toán trực tiếp', '2025-12-24 07:47:25', 'final'),
+(38, 9, 6, 7, 1, 10000.00, 'Thanh toán trực tiếp', '2025-12-24 11:20:47', 'final'),
+(39, 10, 27, 4, 2, 10000.00, 'Thanh toán trực tiếp', '2025-12-24 13:07:41', 'pending'),
+(40, 10, 27, 2, 2, 40000.00, 'Thanh toán trực tiếp', '2025-12-24 13:07:46', 'pending');
 
 -- --------------------------------------------------------
 
@@ -456,14 +466,12 @@ INSERT INTO `reviews` (`id_reviews`, `rating`, `review_text`, `id_customer`, `id
 (1, 5, 'Sân đẹp, sạch sẽ, chủ sân thân thiện. Rất hài lòng!', 9, 1, '2025-12-05 13:46:16'),
 (2, 4, 'Sân ổn, ánh sáng tốt nhưng phòng tắm hơi nhỏ.', 10, 1, '2025-12-05 13:46:16'),
 (3, 2, 'Sân hơi trơn khi trời mưa, cần cải thiện thoát nước.', 12, 1, '2025-12-05 13:46:16'),
-(4, 4, 'hehe', 9, 1, '2025-12-05 14:47:03'),
-(5, 3, 'hay', 9, 1, '2025-12-05 14:51:13'),
-(6, 2, 'ptit ptit ptit', 9, 1, '2025-12-05 14:53:19'),
+(4, 5, 'chất lượng mặt sân và dịch vụ ở đây cực kỳ tốt, giá tiền phù hợp', 9, 1, '2025-12-05 14:47:03'),
 (7, 4, 'ai haibara', 3, 1, '2025-12-05 14:55:04'),
 (8, 4, 'd23 ptit diểm danh', 3, 3, '2025-12-05 14:55:45'),
 (10, 4, 'i love ptit', 3, 5, '2025-12-05 15:10:20'),
-(12, 4, 'pka', 3, 4, '2025-12-05 15:12:14'),
-(13, 3, 'he', 3, 4, '2025-12-05 15:14:12'),
+(12, 4, 'tạm ổn', 3, 4, '2025-12-05 15:12:14'),
+(13, 4, 'chất lượng sân chưa được tốt lắm, nhưng giá thành khá rẻ, dễ tiếp cận với học sinh sinh viên', 3, 4, '2025-12-05 15:14:12'),
 (14, 5, 'tôi rất yêu ptit', 3, 3, '2025-12-05 15:15:34'),
 (15, 3, 'hello', 3, 1, '2025-12-05 15:34:20'),
 (16, 4, 'mê nha', 3, 3, '2025-12-05 16:38:14'),
@@ -489,9 +497,15 @@ INSERT INTO `reviews` (`id_reviews`, `rating`, `review_text`, `id_customer`, `id
 (44, 5, 'sân mới và rộng', 13, 32, '2025-12-16 15:02:18'),
 (45, 4, 'sân mới và đẹp', 13, 27, '2025-12-16 15:11:50'),
 (46, 4, 'SÂN BÓNG CÔNG NGHỆ HIỆN ĐẠI VÀ MỚI', 13, 30, '2025-12-17 07:36:14'),
-(47, 4, 'ptit', 8, 3, '2025-12-19 00:37:53'),
 (49, 5, 'Sân vận động bao gồm 4 khán đài, được xây dựng theo hình lòng chảo có 20 bậc chứa', 13, 33, '2025-12-21 11:46:18'),
-(50, 4, 'Sân bóng có dịch vụ khá tốt tại Thanh Xuân', 13, 37, '2025-12-22 13:04:55');
+(50, 4, 'Sân bóng có dịch vụ khá tốt tại Thanh Xuân', 13, 37, '2025-12-22 13:04:55'),
+(51, 5, 'sân bóng rộng rãi và dịch vụ khá ổn', 9, 27, '2025-12-24 09:55:14'),
+(52, 5, 'sân bóng có mặt cỏ rất tốt', 9, 12, '2025-12-24 10:14:23'),
+(64, 5, 'sân cầu lông khá rộng rãi, dịch vụ đa dạng, giá thành cực kỳ hợp lý với đại đa số người tập', 9, 1, '2025-12-24 12:31:00'),
+(67, 5, 'chất lượng, dịch vụ tốt, giá cả khá rẻ nếu so sánh với các sân trong khu vực Hà Đông', 9, 3, '2025-12-24 12:46:56'),
+(68, 4, 'thật tuyệt vời khi tập luyện cùng những người bạn tại đây, chất lượng sân và dịch vụ đều ổn, ngoại trừ việc hơi đông vào cuối tuần', 10, 3, '2025-12-24 12:48:49'),
+(70, 5, 'mặt cỏ sân khá đẹp, chất lượng dịch vụ ổn, mức giá thuê sân ở mức trung bình so với các sân trong khu vực', 10, 27, '2025-12-24 13:06:20'),
+(71, 4, 'sân bóng chất lượng ổn, mặt cỏ siêu đẹp, điểm trừ là giá thành hơi cao', 10, 6, '2025-12-24 13:43:08');
 
 -- --------------------------------------------------------
 
@@ -575,10 +589,10 @@ INSERT INTO `users` (`id`, `email`, `phone`, `username`, `password`, `role`, `st
 (4, 'seller2@gmail.com', '0938283923', 'seller', '$2b$10$8QJCXxuc/WTcyicvKb5KXOFo.iHarOiyb6sQC48ZDUa.PrbvbP0wq', 'isSeller', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1765967137193images1.jpg?alt=media&token=d2d5d303-c75c-407e-b6a2-c273a2c207be', '2024-03-19 00:40:14', '2025-12-17 10:25:39', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1764899823182qr_te.png?alt=media&token=afd337ee-fd2a-4936-a7ad-8bc238715760', 41, 'male'),
 (5, 'banhang1@gmail.com', '0123456789', 'banhang1', '$2b$10$vRBLJ68GZzqC6RARnEJn3eIJmOn2dWrC6hoR2CGFExFRNDxFXRW.y', 'isSeller', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1764521372468ptit.png?alt=media&token=2e0ba9eb-02f4-4ddb-8097-b3d5169998c7', '2024-05-19 06:15:38', '2025-12-05 09:15:17', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1764521267193qr_te.png?alt=media&token=34f011a5-a164-434c-b5c5-2ff294311e98', 28, 'female'),
 (6, 'buyer@gmail.com', '0917333666', 'seller', '$2b$10$Yb84dhZPQs5ssnoRqvyAgOFQNesWX4BlZHQUgygU41fSjwYjcd6IK', 'isClient', 'actived', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', '2025-08-12 10:11:02', '2025-12-05 09:15:17', NULL, 30, 'male'),
-(7, 'vuvunghaha@gmail.com', '09144445566', 'test 1', '$2b$10$skRtIeF17.u6y8ayF3P5v.MgzFe76hidvQoQHsnLRb0dMuS6RPNa6', 'isClient', 'actived', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', '2025-08-12 10:22:01', '2025-12-05 09:15:17', NULL, 19, 'male'),
+(7, 'vuvunghaha@gmail.com', '09144445566', 'test 1', '$2b$10$skRtIeF17.u6y8ayF3P5v.MgzFe76hidvQoQHsnLRb0dMuS6RPNa6', 'isClient', 'actived', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', '2025-08-12 10:22:01', '2025-12-24 13:26:45', NULL, 19, 'male'),
 (8, 'huykhalac@gmail.com', '0326456788', 'huyptit', '$2b$10$MzDDmA75xnqcts8RuG6k/uSEIZxiQvUI2pQilIJQnLCMhmE/vOuZm', 'isClient', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1764602475028HD-wallpaper-conan-edogawa-cute-detective-conan-male-megane.jpg?alt=media&token=8a40e5b6-3200-4fbe-a28e-894c18e4c839', '2025-11-17 04:46:12', '2025-12-19 00:38:41', NULL, 22, 'male'),
-(9, 'huyptit@gmail.com', '0326456788', 'B21DCCN441', '$2b$10$rZcnhIBDJInOluCvbR01..9qPQ4sz7pI6K6x/71/YctI8sTKeIZmK', 'isClient', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1764937786624conan.webp?alt=media&token=1f723d52-bddb-4ad0-867d-415834b096e2', '2025-12-01 15:32:46', '2025-12-20 14:01:59', NULL, 21, 'male'),
-(10, 'd23ptit@gmail.com', '0123456788', 'd23ptit', '$2b$10$EoRcCMVieqrTQH6MvVqoPeLU2/phXGNo0PXV0Nmg4ecyGDK4mQEkC', 'isClient', 'actived', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', '2025-12-02 14:11:57', '2025-12-05 09:15:17', NULL, 10, 'male'),
+(9, 'huyptit@gmail.com', '0326456788', 'B21DCCN441', '$2b$10$rZcnhIBDJInOluCvbR01..9qPQ4sz7pI6K6x/71/YctI8sTKeIZmK', 'isClient', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/176658030059992586415.jpg?alt=media&token=166ce19e-449f-4c06-b23a-b30ccdb8b75e', '2025-12-01 15:32:46', '2025-12-24 12:45:02', NULL, 21, 'male'),
+(10, 'd23ptit@gmail.com', '0123456788', 'd23ptit', '$2b$10$EoRcCMVieqrTQH6MvVqoPeLU2/phXGNo0PXV0Nmg4ecyGDK4mQEkC', 'isClient', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1766580472261images%20(1).jpg?alt=media&token=6723bc58-4560-4877-bece-1f8051c7e7ee', '2025-12-02 14:11:57', '2025-12-24 12:47:53', NULL, 20, 'female'),
 (11, 'seller_hanu@gmail.com', '0123324452', 'seller_hanu', '$2b$10$XnBFBLyYUpZsbP87C600ueYUJ1dKtOJrNaO1pt7aGCGFDCNUGrpCW', 'isSeller', 'actived', 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png', '2025-12-03 14:43:00', '2025-12-05 09:15:17', NULL, 51, 'female'),
 (12, 'kaitokid@gmail.com', '0356658868', 'Kaito Kid', '$2b$10$Okae8oNYd8EpJDB/kXoB2.m2X4hkaeEP/NEW1oNhMU.m/nKNvpsHq', 'isClient', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1764931417662kaitokid.png?alt=media&token=d4d42cd3-c0b1-46e9-abd2-20dc0140dbea', '2025-12-05 10:42:45', '2025-12-05 10:47:04', NULL, 19, 'male'),
 (13, 'mixi@gmail.com', '0363636363', 'mixi', '$2b$10$cCLvxbwiFAu53nuTi7VRAuDnu4ORpSwJjxh.e.3aTrqCXXj8X7L2O', 'isClient', 'actived', 'https://firebasestorage.googleapis.com/v0/b/zalo-app-66612.appspot.com/o/1765002032445mixi.jpg?alt=media&token=843afbe4-eaa4-4aa4-953c-6ac2866af30a', '2025-12-06 06:19:32', '2025-12-06 06:20:40', NULL, 36, 'male');
@@ -714,7 +728,7 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `courts`
@@ -750,7 +764,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `password_reset_tokens`
@@ -780,7 +794,7 @@ ALTER TABLE `residence_rules`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id_reviews` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_reviews` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `tournaments`

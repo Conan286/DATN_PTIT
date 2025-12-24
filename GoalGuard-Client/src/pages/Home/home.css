@@ -362,6 +362,31 @@ h3 {
     color: #d70018;
 }
 
+.booking-info {
+  margin-top: 6px;
+}
+
+.booking-count {
+  display: inline-block;
+  background-color: #fff7e6;
+  color: #d46b08;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.booking-new {
+  display: inline-block;
+  background-color: #f6ffed;
+  color: #389e0d;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+
 .promotion_product {
     color: #707070;
     font-weight: 700;

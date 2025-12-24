@@ -43,7 +43,7 @@ const ProductDetail = () => {
 const [reviewList, setReviewList] = useState([]);
 const [newRating, setNewRating] = useState(0);
 const [newComment, setNewComment] = useState("");
-
+const [editingReview, setEditingReview] = useState(null);
 
 
 
@@ -97,6 +97,7 @@ useEffect(() => {
 
 // Gửi review
 const handleSubmitReview = async () => {
+    // 1. Kiểm tra đăng nhập
     if (!userData?.id) {
         return notification.error({
             message: "Thông báo",
@@ -104,6 +105,7 @@ const handleSubmitReview = async () => {
         });
     }
 
+    // 2. Kiểm tra rating
     if (newRating === 0) {
         return notification.error({
             message: "Thông báo",
@@ -119,27 +121,60 @@ const handleSubmitReview = async () => {
             id_courts: Number(id)
         };
 
+        if (editingReview) {
+            // TRƯỜNG HỢP CHỈNH SỬA
+            await reviewApi.updateReview(editingReview.id_reviews, body);
+            notification.success({
+                message: "Thông báo",
+                description: "Đã cập nhật đánh giá thành công!"
+            });
+        } else {
+            // TRƯỜNG HỢP THÊM MỚI
+            await reviewApi.addReview(body);
+            notification.success({
+                message: "Đã gửi đánh giá",
+                description: "Cảm ơn bạn đã chia sẻ!"
+            });
+        }
 
-        
-        const res = await reviewApi.addReview(body);
-
-        notification.success({
-            message: "Đã gửi đánh giá",
-            description: "Cảm ơn bạn đã chia sẻ!"
-        });
-
+        // 3. Reset form và cập nhật lại danh sách hiển thị
+        setEditingReview(null);
         setNewRating(0);
         setNewComment("");
         
+        // Gọi lại API lấy danh sách review mới nhất
+        const res = await reviewApi.getReviewsByCourt(Number(id));
+        setReviewList(res || []);
+        
     } catch (err) {
-        console.log(err);
+        console.error(err);
         notification.error({
             message: "Lỗi",
-            description: "Không thể gửi đánh giá!"
+            description: editingReview ? "Không thể cập nhật đánh giá!" : "Không thể gửi đánh giá!"
         });
     }
 };
 
+
+// Hàm xóa
+const handleDeleteReview = async (reviewId) => {
+    try {
+        await reviewApi.deleteReview(reviewId, userData.id);
+        notification.success({ message: "Đã xóa đánh giá" });
+        // Load lại danh sách
+        const res = await reviewApi.getReviewsByCourt(Number(id));
+        setReviewList(res || []);
+    } catch (err) {
+        notification.error({ message: "Không thể xóa đánh giá" });
+    }
+};
+
+// Hàm mở form sửa
+const handleEditClick = (rv) => {
+    setEditingReview(rv);
+    setNewRating(rv.rating);
+    setNewComment(rv.review_text);
+};
 
 const handleOrderService = async (service) => {
     const user = localStorage.getItem("user");
@@ -166,7 +201,7 @@ const handleOrderService = async (service) => {
 
         notification.success({
             message: "Thành công",
-            description: "Đặt dịch vụ thành công!",
+            description: "Hãy vào giỏ hàng hoàn tất thanh toán!",
         });
 
         setOpenServiceModal(false);
@@ -342,7 +377,7 @@ const totalAmount = normalAmount + peakAmount;
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Đặt sân thành công',
+                            'Đặt sân thành công, hãy vào giỏ hàng để thanh toán',
                     });
                     setOpenModalCreate(false);
 
@@ -435,10 +470,37 @@ const totalAmount = normalAmount + peakAmount;
                             </div>
                             <div
                                 className="describe_detail_description"
-                                dangerouslySetInnerHTML={{ __html: productDetail.description }}
+                                dangerouslySetInnerHTML={{ __html: 'Địa chỉ: '+ productDetail.description }}
                             ></div>
                            
                         </div>
+                        {/* SỐ LƯỢT ĐẶT SÂN */}
+<div
+    className="court-booking-count"
+    style={{
+        marginTop: 12,
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        fontSize: 14,
+        color: "#555",
+    }}
+>
+    {productDetail?.booking_count > 0 ? (
+        <>
+            <span>
+                Số Lượt Đặt Sân: <b style={{ color: "#1677ff" }}>
+                    {productDetail.booking_count}
+                </b> Lượt
+            </span>
+        </>
+    ) : (
+        <span style={{ fontStyle: "italic", color: "#999" }}>
+            Hãy là người đặt sân đầu tiên 
+        </span>
+    )}
+</div>
+
                         <div className="describe">
                         {/*  ĐÁNH GIÁ SÂN */}
                         <div
@@ -551,16 +613,38 @@ const totalAmount = normalAmount + peakAmount;
   <p>Chưa có đánh giá nào. Hãy là người đầu tiên!</p>
 ) : (
   (reviewList || []).map((rv) => (
-    <Card key={rv.id_reviews} style={{ marginBottom: 12 }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <strong>{rv.user_name}</strong>
-        <Rate disabled value={rv.rating} />
-      </div>
-      <p>{rv.review_text}</p>
-      <small style={{ color: "#888" }}>
-        {rv.created_at ? moment(rv.created_at).format("DD/MM/YYYY HH:mm") : 'Chưa có ngày'}
-      </small>
+   <Card key={rv.id_reviews} style={{ marginBottom: 12 }}>
+        <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 10 }}>
+            {/* Hiển thị Avatar */}
+            <img 
+                src={rv.user_avatar || "https://via.placeholder.com/40"} 
+                alt="avatar" 
+                style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }}
+            />
+            <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <strong>{rv.user_name}</strong>
+                    <Rate disabled value={rv.rating} style={{ fontSize: 14 }} />
+                </div>
+            </div>
+        </div>
+        
+        <p style={{ marginLeft: 52 }}>{rv.review_text}</p>
+        
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginLeft: 52 }}>
+            <small style={{ color: "#888" }}>
+                {rv.created_at ? moment(rv.created_at).format("DD/MM/YYYY HH:mm") : 'Chưa có ngày'}
+            </small>
+            
+            {userData?.id === rv.id_customer && (
+                <div style={{ display: "flex", gap: 10 }}>
+                    <Button type="link" size="small" onClick={() => handleEditClick(rv)}>Sửa</Button>
+                    <Button type="link" size="small" danger onClick={() => handleDeleteReview(rv.id_reviews)}>Xóa</Button>
+                </div>
+            )}
+        </div>
     </Card>
+    
   ))
 )}
 
@@ -624,6 +708,21 @@ const totalAmount = normalAmount + peakAmount;
                                                                       </span>
                                                                     )}
                                                                   </div>
+                                                                   {/*Count LƯỢT ĐẶT SÂN */}
+                      <div className="booking-info">
+                        {item.booking_count > 0 ? (
+                          <span className="booking-count">
+                            Số Lượt Đặt: {item.booking_count} lượt
+                          </span>
+                        ) : (
+                          <span className="booking-new">
+                            Hãy là người đặt đầu tiên
+                          </span>
+                        )}
+                      </div>
+                      <div className="address-multiline">
+                                            Địa Chỉ: {item.description}
+                                        </div>
                                             <div>Khu vực: {item.area}</div>
                                             <div>Loại sân: {item.field_type}</div>
 

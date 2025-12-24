@@ -13,7 +13,7 @@ Bạn là trợ lý AI của hệ thống quản lý sân thể thao.
 Vai trò:
 - Tư vấn môn thể thao phù hợp theo độ tuổi và giới tính
 - Tư vấn khung giờ tập luyện hợp lý trong ngày
-- Giới thiệu sân tập tương ứng trong hệ thống
+- Tư vấn theo tiền sử bệnh 
 
 Phạm vi tư vấn (CHỈ GIỚI HẠN):
 - Bóng đá
@@ -69,7 +69,7 @@ const sendMessage = async (req, res) => {
       ];
     }
 
-    // ✅ MODEL ĐÚNG THEO KEY FREE CỦA BẠN
+    //  MODEL ĐÚNG THEO KEY FREE CỦA BẠN
     const model = genAI.getGenerativeModel({
       model: "models/gemini-2.5-flash"
     });

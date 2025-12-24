@@ -153,7 +153,7 @@ const Home = () => {
                     </div>
 
                     <div className="list-products container" key="1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))', gridGap: '25px' }}>
-                        {productList.slice(0, 20).map((item) => (
+                        {productList.slice(0, 16).map((item) => (
                             <div
                                 className='col-product'
                                 onClick={() => handleReadMore(item.id)}
@@ -187,6 +187,7 @@ const Home = () => {
                                                 {numberWithCommas(Number(item.price))}đ/giờ
                                             </Paragraph>
                                         </div>
+                                         
                                           <div className="truncate" style={{ display: "flex", alignItems: "center", gap: 6 }}>
                         {item.avg_rating > 0 ? (
                           <>
@@ -203,6 +204,18 @@ const Home = () => {
                         ) : (
                           <span style={{ fontSize: 12, color: "#999", fontStyle: "italic" }}>
                             Chưa có đánh giá
+                          </span>
+                        )}
+                      </div>
+                       {/*Count LƯỢT ĐẶT SÂN */}
+                      <div className="booking-info">
+                        {item.booking_count > 0 ? (
+                          <span className="booking-count">
+                            Số Lượt Đặt: {item.booking_count} lượt
+                          </span>
+                        ) : (
+                          <span className="booking-new">
+                            Hãy là người đặt đầu tiên
                           </span>
                         )}
                       </div>

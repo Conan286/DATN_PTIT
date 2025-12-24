@@ -230,7 +230,7 @@ const DashBoard = () => {
                                         <div className='card_number'>
                                             <div>
                                                 <div className='number_total'>{courts?.length}</div>
-                                                <div className='title_total'>Số giải đấu</div>
+                                                <div className='title_total'>Số lượng sân</div>
                                             </div>
                                             <div>
                                                 <ShopTwoTone style={{ fontSize: 48 }} />

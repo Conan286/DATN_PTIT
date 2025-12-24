@@ -369,7 +369,7 @@ const AssetManagement = () => {
             key: 'field_type',
         },
         {
-            title: 'Người dùng',
+            title: 'Chủ sân',
             dataIndex: 'user_name',
             key: 'user_name',
         },
@@ -392,12 +392,12 @@ const AssetManagement = () => {
                 return formattedCost;
             },
         },
-        {
-            title: 'Ngày tạo',
-            key: 'created_at',
-            dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
-        },
+        // {
+        //     title: 'Ngày tạo',
+        //     key: 'created_at',
+        //     dataIndex: 'created_at',
+        //     render: (text) => moment(text).format('YYYY-MM-DD'),
+        // },
         {
             title: 'Phê duyệt',
             dataIndex: 'approval_status',

@@ -136,6 +136,31 @@ hr {
     font-weight: 600;
 }
 
+.booking-info {
+  margin-top: 6px;
+}
+
+.booking-count {
+  display: inline-block;
+  background-color: #fff7e6;
+  color: #d46b08;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.booking-new {
+  display: inline-block;
+  background-color: #f6ffed;
+  color: #389e0d;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+
 .price h1 {
     display: block;
     padding: 0;

@@ -84,14 +84,22 @@ exports.getCourtById = async (req, res) => {
     try {
         const id = req.params.id;
         const [rows] = await db.execute(`
-            SELECT courts.*, field_types.type AS field_type, areas.name AS area, users.username AS user_name, ROUND(AVG(reviews.rating), 1) AS avg_rating,  COUNT(reviews.id_courts) AS review_count
-            FROM courts
-            LEFT JOIN field_types ON courts.id_field_types = field_types.id
-            LEFT JOIN areas ON courts.id_areas = areas.id
-            LEFT JOIN users ON courts.id_users = users.id
-            LEFT JOIN reviews ON courts.id = reviews.id_courts
-            WHERE courts.id = ?
-            GROUP BY courts.id
+            SELECT 
+    courts.*, 
+    field_types.type AS field_type, 
+    areas.name AS area, 
+    users.username AS user_name, 
+    ROUND(AVG(reviews.rating), 1) AS avg_rating,  
+    COUNT(DISTINCT reviews.id_reviews) AS review_count,
+    COUNT(DISTINCT bookings.id ) AS booking_count
+FROM courts
+LEFT JOIN field_types ON courts.id_field_types = field_types.id
+LEFT JOIN areas ON courts.id_areas = areas.id
+LEFT JOIN users ON courts.id_users = users.id
+LEFT JOIN reviews ON courts.id = reviews.id_courts
+LEFT JOIN bookings ON courts.id = bookings.court_id
+WHERE courts.id = ?
+GROUP BY courts.id;
         `, [id]);
         if (rows.length > 0) {
             res.status(200).json(rows[0]);
@@ -108,12 +116,20 @@ exports.getCourtById = async (req, res) => {
 exports.getAllCourts = async (req, res) => {
     try {
         const [rows] = await db.execute(`
-            SELECT courts.*, field_types.type AS field_type, areas.name AS area, users.username AS user_name,  ROUND(AVG(reviews.rating), 1) AS avg_rating,  COUNT(reviews.id_courts) AS review_count
-            FROM courts
-            LEFT JOIN field_types ON courts.id_field_types = field_types.id
-            LEFT JOIN areas ON courts.id_areas = areas.id
-            LEFT JOIN users ON courts.id_users = users.id
-            LEFT JOIN reviews ON courts.id = reviews.id_courts
+         SELECT 
+            courts.*, 
+            field_types.type AS field_type, 
+            areas.name AS area, 
+            users.username AS user_name, 
+            ROUND(AVG(reviews.rating), 1) AS avg_rating,  
+            COUNT(DISTINCT reviews.id_reviews) AS review_count,
+            COUNT(DISTINCT bookings.id ) AS booking_count
+        FROM courts
+        LEFT JOIN field_types ON courts.id_field_types = field_types.id
+        LEFT JOIN areas ON courts.id_areas = areas.id
+        LEFT JOIN users ON courts.id_users = users.id
+        LEFT JOIN reviews ON courts.id = reviews.id_courts
+        LEFT JOIN bookings ON courts.id = bookings.court_id
            GROUP BY courts.id
         `);
         res.status(200).json(rows);
@@ -153,12 +169,20 @@ exports.getCourtsByUserId = async (req, res) => {
     try {
         const id_users = req.params.id;
         const [rows] = await db.execute(`
-            SELECT courts.*, field_types.type AS field_type, areas.name AS area, users.username AS user_name,  ROUND(AVG(reviews.rating), 1) AS avg_rating,  COUNT(reviews.id_courts) AS review_count 
+                    SELECT 
+                courts.*, 
+                field_types.type AS field_type, 
+                areas.name AS area, 
+                users.username AS user_name, 
+                ROUND(AVG(reviews.rating), 1) AS avg_rating,  
+                COUNT(DISTINCT reviews.id_reviews) AS review_count,
+                COUNT(DISTINCT bookings.id ) AS booking_count
             FROM courts
             LEFT JOIN field_types ON courts.id_field_types = field_types.id
             LEFT JOIN areas ON courts.id_areas = areas.id
             LEFT JOIN users ON courts.id_users = users.id
             LEFT JOIN reviews ON courts.id = reviews.id_courts
+            LEFT JOIN bookings ON courts.id = bookings.court_id
             WHERE courts.id_users = ?
             GROUP BY courts.id
         `, [id_users]);
@@ -174,14 +198,23 @@ exports.getCourtsByAreaId = async (req, res) => {
     try {
         const id_areas = req.params.id;
         const [rows] = await db.execute(`
-          SELECT courts.*, field_types.type AS field_type, areas.name AS area, users.username AS user_name,  ROUND(AVG(reviews.rating), 1) AS avg_rating,   COUNT(reviews.id_courts) AS review_count
-            FROM courts
-            LEFT JOIN field_types ON courts.id_field_types = field_types.id
-            LEFT JOIN areas ON courts.id_areas = areas.id
-            LEFT JOIN users ON courts.id_users = users.id
-            LEFT JOIN reviews ON courts.id = reviews.id_courts
+       SELECT 
+            courts.*, 
+            field_types.type AS field_type, 
+            areas.name AS area, 
+            users.username AS user_name, 
+            ROUND(AVG(reviews.rating), 1) AS avg_rating,  
+            COUNT(DISTINCT reviews.id_reviews) AS review_count,
+            COUNT(DISTINCT bookings.id ) AS booking_count
+        FROM courts
+        LEFT JOIN field_types ON courts.id_field_types = field_types.id
+        LEFT JOIN areas ON courts.id_areas = areas.id
+        LEFT JOIN users ON courts.id_users = users.id
+        LEFT JOIN reviews ON courts.id = reviews.id_courts
+        LEFT JOIN bookings ON courts.id = bookings.court_id
+
             WHERE courts.id_areas = ?
-             GROUP BY courts.id
+            GROUP BY courts.id
         `, [id_areas]);
         res.status(200).json(rows);
     } catch (error) {

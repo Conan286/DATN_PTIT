@@ -284,12 +284,12 @@ const ProductManagement = () => {
                 return formattedCost;
             },
         },
-        {
-            title: 'Ngày tạo',
-            key: 'created_at',
-            dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
-        },
+        // {
+        //     title: 'Ngày tạo',
+        //     key: 'created_at',
+        //     dataIndex: 'created_at',
+        //     render: (text) => moment(text).format('YYYY-MM-DD'),
+        // },
         {
             title: 'Action',
             key: 'action',

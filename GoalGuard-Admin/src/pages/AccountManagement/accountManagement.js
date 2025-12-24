@@ -76,7 +76,7 @@ const AccountManagement = () => {
                                 Quản lý
                             </Tag> : text === "isSeller" ?
                                 <Tag color="green" key={text} style={{ width: 120, textAlign: "center" }} icon={<CheckCircleOutlined />}>
-                                    Nhân viên
+                                    Chủ sân
                                 </Tag> :  text === "isClient" ?
                                         <Tag color="geekblue" key={text} style={{ width: 120, textAlign: "center" }} icon={<UserOutlined />}>
                                             Khách hàng

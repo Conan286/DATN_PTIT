@@ -224,6 +224,10 @@ const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
                         <Paragraph className="title-product overflow-ellipsis overflow-hidden whitespace-nowrap">
                           {item.name}
                         </Paragraph>
+                     
+
+                      
+
                     
                     <div className="truncate" style={{ display: "flex", alignItems: "center", gap: 6 }}>
                         {item.avg_rating > 0 ? (
@@ -244,14 +248,29 @@ const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
                           </span>
                         )}
                       </div>
+                        {/*Count LƯỢT ĐẶT SÂN */}
+                      <div className="booking-info">
+                        {item.booking_count > 0 ? (
+                          <span className="booking-count">
+                            Số Lượt Đặt: {item.booking_count} lượt
+                          </span>
+                        ) : (
+                          <span className="booking-new">
+                            Hãy là người đặt đầu tiên
+                          </span>
+                        )}
+                      </div>
+                      {/* <div className="address-multiline">
+                                            Địa Chỉ: {item.description}
+                                        </div> */}
                         <div className="truncate">Khu vực: {item.area}</div>
                         <div className="truncate">Loại sân: {item.field_type}</div>
-
-                        <div className="price-amount">
+                                <div className="price-amount">
                           <Paragraph className="price-product">
                             {numberWithCommas(Number(item.price))}đ/giờ
                           </Paragraph>
                         </div>
+                     
                       </div>
                     </div>
                   </div>

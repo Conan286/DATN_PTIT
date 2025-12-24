@@ -12,7 +12,18 @@ const reviewApi = {
     addReview(data) {
         const url = `/reviews`;  // Chuẩn rồi
         return axiosClient.post(url, data);
-    }
+    },
+
+
+    updateReview(id, data) {
+    const url = `/reviews/${id}`;
+    return axiosClient.put(url, data);
+    },
+    deleteReview(id, userId) {
+        const url = `/reviews/delete-user-review/${id}`;
+        return axiosClient.post(url, { id_customer: userId });
+}
 };
+
 
 export default reviewApi;
