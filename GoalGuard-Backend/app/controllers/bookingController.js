@@ -46,17 +46,17 @@ exports.bookCourt = async (req, res) => {
 
         // Lấy tất cả các đặt sân trong khoảng thời gian này của sân đó
         const [existingBookings] = await db.execute('SELECT * FROM bookings WHERE court_id = ? AND booking_date = ?', [court_id, booking_date]);
-        
+           const newStartTime = moment(start_time, 'HH:mm');
+            const newEndTime = moment(end_time, 'HH:mm');
+            if (newEndTime.isSameOrBefore(newStartTime)) {
+            return res.status(200).json({ message: 'booking time wrong endtime and start' });
+        }
         // Kiểm tra xem khoảng thời gian mới có chồng lên bất kỳ đặt sân nào khác không
         for (const booking of existingBookings) {
             const existingStartTime = moment(booking.start_time, 'HH:mm');
             const existingEndTime = moment(booking.end_time, 'HH:mm');
 
-            const newStartTime = moment(start_time, 'HH:mm');
-            const newEndTime = moment(end_time, 'HH:mm');
-            if (newEndTime.isSameOrBefore(newStartTime)) {
-            return res.status(200).json({ message: 'booking time wrong endtime and start' });
-        }
+         
             // Kiểm tra xem thời gian đặt sân mới có chồng lên thời gian của các đặt sân khác không
             if (
                 (newStartTime.isBetween(existingStartTime, existingEndTime, undefined, '[)') || 
