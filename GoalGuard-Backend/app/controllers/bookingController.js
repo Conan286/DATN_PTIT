@@ -54,7 +54,9 @@ exports.bookCourt = async (req, res) => {
 
             const newStartTime = moment(start_time, 'HH:mm');
             const newEndTime = moment(end_time, 'HH:mm');
-
+            if (newEndTime.isSameOrBefore(newStartTime)) {
+            return res.status(200).json({ message: 'booking time wrong endtime and start' });
+        }
             // Kiểm tra xem thời gian đặt sân mới có chồng lên thời gian của các đặt sân khác không
             if (
                 (newStartTime.isBetween(existingStartTime, existingEndTime, undefined, '[)') || 

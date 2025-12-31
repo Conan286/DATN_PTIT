@@ -189,7 +189,7 @@ const userController = {
         });
     },
 
-    // ⭐ UPDATED: hỗ trợ age + gender
+    //  UPDATED: hỗ trợ age + gender
     updateProfile: async (req, res) => {
         try {
             const userId = req.params.id;

@@ -164,7 +164,7 @@ exports.updateApprovalStatus = async (req, res) => {
     }
 };
 
-// Lấy thông tin sân theo id người dùng
+// Lấy thông tin sân theo id cs
 exports.getCourtsByUserId = async (req, res) => {
     try {
         const id_users = req.params.id;

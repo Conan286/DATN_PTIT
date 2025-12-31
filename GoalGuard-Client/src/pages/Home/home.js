@@ -85,18 +85,18 @@ const Home = () => {
                         <Col span={15} style={{ height: '100%' }}>
                             <Carousel autoplay className="carousel-image" style={{ height: '100%' }}>
                                
-                               
-                                <div className="img">
-                                    <img style={{ width: '100%', height: 300, objectFit: 'cover' }} src="https://cdn2.fptshop.com.vn/unsafe/800x0/kich_thuoc_san_Pickleball_03_451a7d63d8.jpg" alt="" />
+                               <div className="img">
+                                    <img style={{ width: '100%', height: 300, objectFit: 'cover' }} src="https://tmssl.akamaized.net//images/foto/galerie/stadio-benito-stirpe-frosinone-1694688355-116648.jpg?lm=1694688375" alt="" />
                                 </div>
+                              
                                 <div className="img">
                                     <img style={{ width: '100%', height: 300, objectFit: 'cover' }} src="https://nvbplay.vn/wp-content/uploads/2025/03/Kham-Pha-San-Pickleball-Can-Tho-Diem-Choi-Hot-Cho-Gioi-Tre-2.jpg" alt="" />
                                 </div>
-                                 <div className="img">
-                                    <img style={{ width: '100%', height: 300, objectFit: 'cover' }} src="https://bizweb.dktcdn.net/100/017/070/files/kich-thuoc-san-bong-da-1-jpeg.jpg?v=1671246300021" alt="" />
+                                  <div className="img">
+                                    <img style={{ width: '100%', height: 300, objectFit: 'cover' }} src="https://png.pngtree.com/thumb_back/fh260/background/20220530/pngtree-badminton---badminton-courts-with-two-shuttlecocks-tournament-training-racquet-photo-image_13724376.jpg" alt="" />
                                 </div>
                                  <div className="img">
-                                    <img style={{ width: '100%', height: 300, objectFit: 'cover' }} src="https://bizweb.dktcdn.net/100/482/641/files/san-pickleball-trong-nha-vs-ngoai-troi.jpg?v=1726026767568" alt="" />
+                                    <img style={{ width: '100%', height: 300, objectFit: 'cover' }} src="https://bizweb.dktcdn.net/100/482/641/files/pickleball-la-gi-cach-choi-pickleball-3.jpg?v=1730111233080" alt="" />
                                 </div>
                             </Carousel>
                             <div className="product-promotion" style={{ height: '100%' }}>

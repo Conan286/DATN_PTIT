@@ -58,28 +58,38 @@ export default function Chatbot() {
   };
 
   const sendMessage = async () => {
-    if (!text.trim() || loading) return;
+  if (!text.trim() || loading) return;
 
-    const userMsg = { from: "user", text: text };
-    setMessages((prev) => [...prev, userMsg]);
-    setText("");
-    setLoading(true);
+  // Giả sử bạn lưu userId trong localStorage sau khi login
+     const user = JSON.parse(localStorage.getItem("user")); // lấy user đã login
+        const userId = user?.id;
+        if (!userId) return console.log("Chưa có userId");
+    console.log("chatbot-userid:",userId);
 
-    try {
-      const res = await axios.post("http://localhost:3100/api/chatbot/send", { // 
-        message: text,
-        sessionId: sessionId,
-      });
+  const userMsg = { from: "user", text: text };
+  setMessages((prev) => [...prev, userMsg]);
+  setText("");
+  setLoading(true);
 
-      if (res.data.status) {
-        setMessages((prev) => [...prev, { from: "bot", text: res.data.data.reply }]); // 
-      }
-    } catch (error) {
-      setMessages((prev) => [...prev, { from: "bot", text: "Lỗi kết nối máy chủ!" }]);
-    } finally {
-      setLoading(false);
+  try {
+    const res = await axios.post("http://localhost:3100/api/chatbot/send", {
+      message: text,
+      sessionId: sessionId,
+      userId: userId, // THÊM DÒNG NÀY
+    });
+
+    if (res.data.status) {
+      setMessages((prev) => [...prev, { from: "bot", text: res.data.data.reply }]);
+    } else {
+      // Hiển thị lỗi từ backend (ví dụ: yêu cầu đăng nhập)
+      setMessages((prev) => [...prev, { from: "bot", text: res.data.message }]);
     }
-  };
+  } catch (error) {
+    setMessages((prev) => [...prev, { from: "bot", text: "Lỗi kết nối máy chủ!" }]);
+  } finally {
+    setLoading(false);
+  }
+};
 
   // 2. Xóa lịch sử trò chuyện 
   const clearChat = async () => {

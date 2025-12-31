@@ -77,7 +77,7 @@ const Login = () => {
           onFinish={onFinish}
         >
           <Form.Item style={{ marginBottom: 3 }}>
-            <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">CHÀO MỪNG BẠN ĐẾN VỚI GOALGUARD!</Divider>
+            <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">CHÀO MỪNG BẠN ĐẾN VỚI HỆ THỐNG!</Divider>
           </Form.Item>
           <Form.Item style={{ marginBottom: 16, textAlign: "center" }}>
             <p className="text">Vui lòng đăng nhập để tiếp tục</p>

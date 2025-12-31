@@ -196,7 +196,7 @@ const handleOrderService = async (service) => {
             productId: service.id,
             quantity: serviceQuantity,
             totalPrice,
-            paymentMethod: "Thanh toán trực tiếp",
+            paymentMethod: "Thanh toán VNPAY",
         });
 
         notification.success({
@@ -304,6 +304,7 @@ const handleOrderService = async (service) => {
             return history.push("/login")
         }
         setLoading(true);
+        
         try {
             const bookingDateTime = dayjs(values.booking_date);
 
@@ -358,6 +359,14 @@ const totalAmount = normalAmount + peakAmount;
             setLoading(false);
 
             return bookingApi.bookCourt(categoryList).then(response => {
+                if (response.message === "booking time wrong endtime and start") {
+                    notification["error"]({
+                        message: `Thông báo`,
+                        description:
+                            'Giờ bắt đầu phải sớm hơn giờ kết thúc',
+                    });
+                    return;
+                }
                 if (response.message === "Booking time conflicts with existing booking") {
                     notification["error"]({
                         message: `Thông báo`,
@@ -390,6 +399,7 @@ const totalAmount = normalAmount + peakAmount;
             throw error;
         }
     }
+    
 
     const [openModalCreate, setOpenModalCreate] = useState(false);
 
@@ -773,7 +783,7 @@ const totalAmount = normalAmount + peakAmount;
                             name="courtBookingCreate"
                             layout="vertical"
                             initialValues={{
-                                payment_method: 'Thanh toán trực tiếp',
+                                payment_method: 'Thanh toán VNPAY',
                             }}
                             scrollToFirstError
                         >
@@ -898,8 +908,8 @@ const totalAmount = normalAmount + peakAmount;
                                     style={{ marginBottom: 10 }}
                                 >
                                     <Select style={{ width: '100%' }}>
-                                        <Select.Option value="Thanh toán trực tiếp">Thanh toán VNPAY</Select.Option>
-                                        <Select.Option value="Chuyển khoản">Chuyển khoản</Select.Option>
+                                        <Select.Option value="Thanh toán VNPAY">Thanh toán VNPAY</Select.Option>
+                                        {/* <Select.Option value="Chuyển khoản">Chuyển khoản</Select.Option> */}
                                     </Select>
                                 </Form.Item>
 

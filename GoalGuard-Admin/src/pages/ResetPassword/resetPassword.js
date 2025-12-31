@@ -64,7 +64,7 @@ const ResetPassword = () => {
                         onFinish={onFinish}
                     >
                         <Form.Item style={{ marginBottom: 3, marginTop: 65 }}>
-                            <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">GoalGuard</Divider>
+                            <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">Hệ thống sân thể thao</Divider>
                         </Form.Item>
                         <Form.Item style={{ marginBottom: 16, textAlign: "center" }}>
                             <p className="text">Thay đổi mật khẩu</p>

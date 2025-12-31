@@ -56,7 +56,7 @@ exports.vnpayReturn = async (req, res) => {
         const bookingId = vnpParams['vnp_TxnRef'].split("_")[0];
         console.log("Booking ID:", bookingId);
         const status = 'final';
-        // 3. Thực hiện Update (Đoạn này dễ chết nhất do lỗi kết nối DB)
+        // 3. Thực hiện Update (Đoạn này dễ lỗi nhất do lỗi kết nối DB)
         try {
             const [result] = await db.execute(
                 "UPDATE bookings SET status = ? WHERE id = ?",

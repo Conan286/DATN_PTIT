@@ -9,7 +9,7 @@ function _Footer(){
         <Footer style={{
             marginLeft: 230,
             textAlign: 'center'}}>
-            Copyright@ 2025 Created by team GoalGuard
+            Copyright@ 2025 Created by team PTIT
         </Footer>
     );
 }

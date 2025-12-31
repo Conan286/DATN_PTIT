@@ -138,7 +138,7 @@ const Tournament = () => {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa giải đấu thành công',
+                            'Cập nhật giải đấu thành công',
                     });
                     setUploadFile();
                     handleCategoryList();
